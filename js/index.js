@@ -1,4 +1,4 @@
-var apiUrl = "https://borcdefteri.selcukaltas.site/";
+var apiUrl = "https://borcdefteriselcukaltas.site/";
 var pathname = window.location.pathname;
 
 // functions
@@ -47,6 +47,7 @@ function girisKontrol() {
         }
     });
 }
+
 
 function borclariListele() {
     $.ajax({
