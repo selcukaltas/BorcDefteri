@@ -23,7 +23,7 @@ function getAuthHeaders() {
 }
 
 function girisKontrol() {
-    if (pathname == "/giris.html") return;
+    if (pathname.endsWith("/giris.html")) return;
 
     var accessToken = getAccessToken();
 
