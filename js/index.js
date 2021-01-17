@@ -220,9 +220,13 @@ $("#frmRegister").submit(function (e) {
                 $("#inputReKayitSifre").val("")
             },
             error: function (xhr, status, error) {
-                var mesaj=JSON.parse(xhr.responseText)
-                toastr.error(mesaj.Message);
-            }
+                if (xhr.responseJSON.ModelState["model.ConfirmPassword"]) {
+                 toastr.error("Parolalar eşleşmiyor.Lütfen tekrar deneyiniz.")
+                }
+                else if (xhr.responseJSON.ModelState[""][1]) {
+                    toastr.error("Bu email adresi ile daha önce kayıt olundu.Tekrar deneyiniz.");
+                }
+              }
     });
 });
 
