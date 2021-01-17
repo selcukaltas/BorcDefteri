@@ -1,0 +1,32 @@
+.gizle {
+    display: none;
+}
+
+#tblBorclar th {
+    text-align: left;
+}
+
+#tblBorclar th.borcMiktarSutun, .borcMiktarSutun {
+    text-align: right;
+    padding-right: 2rem;
+}
+
+.table td.borcMiktarSutun {
+    padding-right: 2rem;
+}
+
+tr.tarafBorclu > td.borcMiktarSutun {
+    color: var(--success);
+}
+
+tr.tarafBorclu > td.borcMiktarSutun::before {
+    content: "+";
+}
+
+tr.tarafAlacakli > td.borcMiktarSutun {
+    color: var(--danger);
+}
+
+tr.tarafAlacakli > td.borcMiktarSutun::before {
+    content: "-";
+}
