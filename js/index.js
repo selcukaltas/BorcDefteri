@@ -1,4 +1,4 @@
-var apiUrl = "https://borcdefteriselcukaltas.site/";
+var apiUrl = "https://borcdefteri.selcukaltas.site/";
 var pathname = window.location.pathname;
 
 // functions
