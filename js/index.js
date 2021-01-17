@@ -207,11 +207,12 @@ $("#frmRegister").submit(function (e) {
             type: "post",
             url: apiUrl + "api/Account/Register",
             data: { Email: $("#inputKayitEmail").val(),
-            Password: $("#inputKayitSifre").val(),
+                Password: $("#inputKayitSifre").val(),
                 ConfirmPassword: $("#inputReKayitSifre").val()
             },
             dataType: 'text',
-            success: function () {
+            success: function (data) {
+                console.log(data);
                 toastr.success("Hesabınız başarıyla oluşturuldu");
                 $("#frmRegister").addClass("d-none");
                 $("#frmGiris").removeClass("d-none");
@@ -220,11 +221,11 @@ $("#frmRegister").submit(function (e) {
                 $("#inputReKayitSifre").val("")
             },
             error: function (xhr, status, error) {
-                if (xhr.responseJSON.ModelState["model.ConfirmPassword"]) {
-                 toastr.error("Parolalar eşleşmiyor.Lütfen tekrar deneyiniz.")
+                if (xhr.responseText == '{"Message":"The request is invalid.","ModelState":{"model.ConfirmPassword":["The password and confirmation password do not match."]}}') {
+                    toastr.error("Şifreler eşleşmiyor. Tekrar deneyiniz.")
                 }
-                else if (xhr.responseJSON.ModelState[""][1]) {
-                    toastr.error("Bu email adresi ile daha önce kayıt olundu.Tekrar deneyiniz.");
+                else if (xhr.responseText.includes("Name")){
+                    toastr.error($("#inputKayitEmail").val()+" email adresi daha önce kayıt olmuştur.Tekrar deneyiniz.")
                 }
               }
     });
